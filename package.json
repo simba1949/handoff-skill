@@ -1,0 +1,25 @@
+{
+  "name": "handoff",
+  "version": "1.0.0",
+  "description": "Install the handoff Claude Code plugin with npx.",
+  "license": "MIT",
+  "repository": "github:simba1949/handoff-skill",
+  "bin": {
+    "handoff": "bin/install.js"
+  },
+  "files": [
+    ".claude-plugin",
+    "commands",
+    "docs",
+    "SKILL.md",
+    "HANDOFF-template.md",
+    "LICENSE",
+    "README.md",
+    "plugin.json",
+    "bin",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}

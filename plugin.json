@@ -1,0 +1,5 @@
+{
+  "name": "handoff",
+  "version": "1.0.0",
+  "description": "Cross-session handoff — write/read HANDOFF.md so long-task context survives across sessions."
+}
