@@ -4,15 +4,13 @@
 
 ## 命令
 
-| 命令 | 作用 |
+| Command | 解释 |
 |---|---|
-| `/handoff:write` | 会话边界，AI 全量重综合 HANDOFF.md |
+| `/handoff:write` | 会话边界，写交接五要素（任务/已完成/卡点/下一步/踩坑）；保留已有决策/踩坑记录 |
+| `/handoff:write full` | 先归档旧内容，再全量重建 HANDOFF.md |
 | `/handoff:read` | 会话开始，轻型摘要 + 是否继续 |
-| `/handoff:update <章节>` | 会话中途，定点补丁（上下文/进度=替换，决策/踩坑=追加） |
-| `/handoff:archive` | 默认提取决策+踩坑归档 |
-| `/handoff:archive full` | 归档整篇 |
-| `/handoff:archive list` | 浏览归档索引 |
-| `/handoff:archive load <文件>` | 加载归档到 HANDOFF.md（有覆盖提示） |
+| `/handoff:update [context\|progress\|decisions\|pitfalls]` | 会话中途定点补丁——上下文/进度=替换，决策/踩坑=追加 |
+| `/handoff:archive [full\|list\|load]` | 归档决策+踩坑（默认）；`full`=整篇，`list`=索引，`load <file>`=加载归档 |
 | `/handoff:help` | 命令列表 + 工作流 |
 
 命令文件按 Claude Code 插件规范置于根级 `commands/{write,read,update,archive,help}.md`（文件名=命令名，含 `description` frontmatter），由 `.claude-plugin/plugin.json` 的 `commands` 映射注册为 `/handoff:` 命名空间。
@@ -30,16 +28,16 @@
 **完整工作流示例**：
 ```bash
 # Day 1: 新任务启动
-/handoff:write                    # 生成初始 HANDOFF.md
+/handoff:write                    # 首次，只写任务/为什么骨架
 # ... 开发中 ...
-/handoff:update 决策记录          # 记录技术选型
-/handoff:update 踩坑记录          # 记录遇到的坑
-/handoff:write                    # 会话结束前全量刷新
+/handoff:update decisions         # 记录技术选型
+/handoff:update pitfalls          # 记录遇到的坑
+/handoff:write                    # 会话结束前补全五要素
 
 # Day 2: 新会话开始
 /handoff:read                     # 快速恢复上下文
 # ... 继续开发 ...
-/handoff:update 当前进度          # 更新进度
+/handoff:update progress          # 更新进度
 /handoff:write                    # 会话结束
 
 # 任务完成

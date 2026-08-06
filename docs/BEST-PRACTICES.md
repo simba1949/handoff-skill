@@ -40,7 +40,7 @@
 ```
 你：帮我选一个状态管理库
 AI：推荐 Zustand，相比 Redux 更轻量...
-你：/handoff:update 决策记录
+你：/handoff:update decisions
     决策：选用 Zustand 而非 Redux
     原因：项目规模小、不需要中间件、学习曲线平缓
 ```
@@ -67,8 +67,8 @@ Day 1, 会话开始
 → /handoff:write（AI 扫描项目，生成初始 HANDOFF.md）
 
 → 开始开发...
-→ 做了技术选型决策 → /handoff:update 决策记录
-→ 踩了一个坑 → /handoff:update 踩坑记录
+→ 做了技术选型决策 → /handoff:update decisions
+→ 踩了一个坑 → /handoff:update pitfalls
 → 完成部分功能，准备下班
 → /handoff:write（会话结束，全量刷新）
 
@@ -76,7 +76,7 @@ Day 2, 新会话开始
 → /handoff:read（快速恢复：看到 Day 1 的进度/决策/踩坑）
 → AI："昨天完成了 XX，卡在 YY，今天从哪开始？"
 → 继续开发...
-→ 又做了 2 个决策 → /handoff:update 决策记录（各一次）
+→ 又做了 2 个决策 → /handoff:update decisions（各一次）
 → 会话结束 → /handoff:write
 ```
 
@@ -126,7 +126,7 @@ Day 2, 新会话开始
 ```
 Day 2, 新会话开始
 → /handoff:read
-→ /handoff:update 当前进度（错！应该用 write）
+→ /handoff:update progress（错！应该用 write）
 结果 → 遗漏 Day 1 结束后到 Day 2 开始之间的项目变化（git 提交、文件修改等）
 ```
 

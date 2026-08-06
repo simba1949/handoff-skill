@@ -28,6 +28,11 @@ description: 'Snapshot HANDOFF.md into .handoff/ (default=decisions+pitfalls, "f
 6. 不删除、不修改当前 `HANDOFF.md`，也不修改任何既有归档。
 7. 输出归档路径、模式和直接父归档。
 
+## 幂等与重复执行
+
+- 重复执行 archive：若自上次归档以来 `HANDOFF.md` 无变化，跳过归档并提示；避免索引里堆积重复快照。
+- 判据是**源头判据**（自上次归档后内容是否变化），而非比较当前内容与最新归档的哈希。
+
 ## archive list 行为
 
 1. 只读 `.handoff/index.md`。

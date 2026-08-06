@@ -23,7 +23,7 @@ description: 'User-driven point patch to a HANDOFF.md section mid-session (conte
 
 **方式 1（结构化）**：
 ```
-/handoff:update 决策记录
+/handoff:update decisions
 决策：选用 React Query 而非 Redux
 原因：服务端状态管理更简洁，减少样板代码
 ```
@@ -34,7 +34,18 @@ description: 'User-driven point patch to a HANDOFF.md section mid-session (conte
 我刚踩了一个坑：Vite 在 WSL2 下热更新失效，需要配置 server.watch.usePolling: true
 ```
 
-章节可为：`上下文` / `当前进度` / `决策记录` / `踩坑记录`
+## 可用章节
+
+HANDOFF.md 共 4 个章节，update 可更新的章节：
+
+| 章节 | 英文 | 含义 | 更新方式 |
+|---|---|---|---|
+| `上下文` | `context` | 一句话任务 / 为什么做 / 技术背景 | 替换该节正文，保留节标题 |
+| `当前进度` | `progress` | 已完成 / 进行中 / 卡点 / 下一步 | 替换该节正文，保留节标题 |
+| `决策记录` | `decisions` | 为什么选 X 不选 Y（表格，时间倒序） | 在现有表格数据行顶部追加一行 |
+| `踩坑记录` | `pitfalls` | 踩过什么坑 + 如何解决（列表，时间倒序） | 在现有条目顶部追加一条 |
+
+英文名用于 `/handoff:update [context\|progress\|decisions\|pitfalls]`；中文名同样接受。
 
 ## 执行步骤
 
